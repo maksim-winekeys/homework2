@@ -2,11 +2,6 @@
 /**
  * @param bool $return
  * @param array $strings
- *
- * Задание #1
- *
-* Функция должна принимать массив строк и выводить каждую строку в отдельном параграфе (тег <p>)
-* Если в функцию передан второй параметр true, то возвращать (через return) результат в виде одной объединенной строки.
  */
 function task1(array $strings, bool $return = true)
 {
@@ -20,17 +15,8 @@ function task1(array $strings, bool $return = true)
 
     echo $result;
 }
-/**
- * Задание #2
 
-Функция должна принимать переменное число аргументов.
-Первым аргументом обязательно должна быть строка, обозначающая арифметическое действие, которое необходимо выполнить со всеми передаваемыми аргументами.
-Остальные аргументы это целые и/или вещественные числа.
 
-Пример вызова: calcEverything(‘+’, 1, 2, 3, 5.2);
-Результат: 1 + 2 + 3 + 5.2 = 11.2
-
- */
 function task2(string $action, ...$args)
 {
     foreach ($args as $n => $arg) {
@@ -62,19 +48,10 @@ function task2(string $action, ...$args)
             return $result;
 
         default:
-            return 'ERROR: uncnown actions';
+            return 'ERROR: unknown actions';
     }
 }
-/**
- * Задание #3 (Использование рекурсии не обязательно)
 
-Функция должна принимать два параметра – целые числа.
-Если в функцию передали 2 целых числа, то функция должна отобразить
-таблицу умножения размером со значения параметров, переданных в функцию.
-(Например если передано 8 и 8, то нарисовать от 1х1 до 8х8).
-Таблица должна быть выполнена с использованием тега <table>
-В остальных случаях выдавать корректную ошибку.
- */
 function task3($a, $b)
 {
     if (!is_int($a)) {
@@ -93,9 +70,7 @@ function task3($a, $b)
     for ($i = 1; $i < $a; $i++) {
         $result .= '<tr>';
         for ($j = 1; $j <= $b; $j++) {
-            $result .= '<td>';
-            $result .= $i * $j;
-            $result .= '</td>';
+            $result .= '<td>' . $i * $j . '</td>';
         }
         $result .= '</tr>';
     }
@@ -117,5 +92,29 @@ function my_file_get_contents(string $filename)
     echo $str;
 }
 
+function task4()
+{
+    date_default_timezone_set('Europe/Moscow');
+    echo date('d.m.Y H:i');
+    echo '<br>';
+    echo strtotime('24.02.2016 00:00:00');
+    echo '<br>';
+    echo date('Y-m-d H:i:s', 1456261200);
+    echo '<br>';
+}
 
+function task5()
+{
+    $string = 'Карл у Клары украл Кораллы';
+    echo str_replace('К', '', $string);
+    echo '<br>';
+    $string = 'Две бутылки лимонада';
+    echo str_replace('Две', 'Три', $string);
+}
 
+function task6()
+{
+    echo '<br>';
+    file_put_contents('test.txt', 'Hello again!');
+    my_file_get_contents('test.txt');
+}
